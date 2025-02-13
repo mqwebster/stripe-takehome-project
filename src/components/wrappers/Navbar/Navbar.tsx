@@ -3,16 +3,18 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 border-b-2 border-orange-base">
+    <header className="sticky top-0 border-b-2 border-orange-base bg-cream-base">
       <div className="container py-md w-full flex justify-between items-center">
         <div className="w-2/5">
-          <Image
-            src={"/logo.png"}
-            width={4096}
-            height={600}
-            alt="Cozy Threads Logo"
-            className="w-full"
-          />
+          <Link href={"/"}>
+            <Image
+              src={"/logo.png"}
+              width={4096}
+              height={600}
+              alt="Cozy Threads Logo"
+              className="w-full"
+            />
+          </Link>
         </div>
 
         <div>
