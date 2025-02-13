@@ -19,12 +19,8 @@ export default function Navbar() {
 
         <div>
           <nav className="flex gap-4">
-            <Link
-              href={"https://mqwebster.com"}
-              target="_blank"
-              className=" text-sm"
-            >
-              Visit my portfolio
+            <Link href={"/cart"} className=" text-sm">
+              Cart
             </Link>
           </nav>
 
