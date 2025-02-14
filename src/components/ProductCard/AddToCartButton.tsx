@@ -13,7 +13,12 @@ export default function AddToCartButton({ product }: { product: Product }) {
 
   return (
     <div>
-      <button onClick={handleAddToCart}>Add to Cart</button>
+      <button
+        onClick={handleAddToCart}
+        className="px-8 py-2 bg-yellow-base text-black-base text-sm rounded-md hover:bg-yellow-400 hover:shadow-lg"
+      >
+        Add to cart
+      </button>
     </div>
   );
 }

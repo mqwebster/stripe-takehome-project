@@ -8,7 +8,7 @@ export default async function ProductCard({ product }: any) {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <div className="w-full aspect-square overflow-clip rounded">
+      <div className="w-full aspect-square overflow-clip rounded-lg">
         <Image
           src={product.images[0] ?? "/default.png"}
           width={400}

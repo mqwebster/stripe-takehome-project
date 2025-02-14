@@ -57,9 +57,16 @@ function CheckoutForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
+    <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <button disabled={!stripe || isProcessing} style={{ marginTop: "1rem" }}>
+      <button
+        disabled={!stripe || isProcessing}
+        className={`px-8 py-2 mt-3xl text-sm rounded-md text-black-base ${
+          !stripe || isProcessing
+            ? "bg-gray-400"
+            : "bg-yellow-base hover:bg-yellow-400 hover:shadow-lg"
+        }`}
+      >
         {isProcessing ? "Processing..." : "Pay Now"}
       </button>
       {message && (
@@ -94,44 +101,51 @@ export default function CheckoutPage() {
   }, [total]);
 
   return (
-    <main style={{ padding: "1rem", display: "flex", gap: "2rem" }}>
-      <section style={{ flex: 1 }}>
-        <h1>Checkout</h1>
-        {cartItems.length === 0 ? (
-          <p>No items in cart.</p>
-        ) : (
-          <div>
-            <h2>Order Summary</h2>
-            <ul style={{ listStyle: "none", padding: 0 }}>
-              {cartItems.map((item) => (
-                <li
-                  key={item.id}
-                  style={{
-                    borderBottom: "1px solid #ccc",
-                    padding: "0.5rem 0",
-                  }}
-                >
-                  <strong>{item.title}</strong> (x{item.quantity})
-                  <br />${(convertPrice(item.price) * item.quantity).toFixed(2)}
-                </li>
-              ))}
-            </ul>
-            <h3 style={{ marginTop: "1rem" }}>Total: ${convertPrice(total)}</h3>
-          </div>
-        )}
-      </section>
+    <main className="container py-3xl">
+      <div className="flex gap-2xl">
+        <section style={{ flex: 1 }}>
+          <h2 className="text-4xl -tracking-[0.06em] font-extralight font-title text-orange-base mb-lg">
+            Checkout
+          </h2>
+          {cartItems.length === 0 ? (
+            <p>No items in cart.</p>
+          ) : (
+            <div>
+              <h3 className="font-bold">Order Summary</h3>
+              <ul style={{ listStyle: "none", padding: 0 }}>
+                {cartItems.map((item) => (
+                  <li
+                    key={item.id}
+                    style={{
+                      borderBottom: "1px solid #ccc",
+                      padding: "0.5rem 0",
+                    }}
+                  >
+                    <strong>{item.title}</strong> (x{item.quantity})
+                    <br />$
+                    {(convertPrice(item.price) * item.quantity).toFixed(2)}
+                  </li>
+                ))}
+              </ul>
+              <h3 style={{ marginTop: "1rem" }}>
+                Total: ${convertPrice(total)}
+              </h3>
+            </div>
+          )}
+        </section>
 
-      <section style={{ flex: 1 }}>
-        {total === 0 ? (
-          <p>Add some items to your cart first!</p>
-        ) : clientSecret ? (
-          <Elements stripe={stripePromise} options={{ clientSecret }}>
-            <CheckoutForm />
-          </Elements>
-        ) : (
-          <p>Loading Payment...</p>
-        )}
-      </section>
+        <section style={{ flex: 1 }}>
+          {total === 0 ? (
+            <p>Add some items to your cart first!</p>
+          ) : clientSecret ? (
+            <Elements stripe={stripePromise} options={{ clientSecret }}>
+              <CheckoutForm />
+            </Elements>
+          ) : (
+            <p>Loading Payment...</p>
+          )}
+        </section>
+      </div>
     </main>
   );
 }
