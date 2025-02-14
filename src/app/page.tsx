@@ -31,6 +31,7 @@ export default function Home() {
                 muted
                 width={"100%"}
                 height={"100%"}
+                className="w-full h-full object-cover"
               >
                 <source src="/home-movie.mp4" type="video/mp4"></source>
               </video>
