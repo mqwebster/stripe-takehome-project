@@ -6,8 +6,8 @@ export default function Home() {
     <div className="container">
       <div className="h-[72vh] my-md">
         <div className="w-full h-full rounded-lg overflow-clip">
-          <div className="bg-orange-base w-full h-full">
-            <div className="w-full h-full flex flex-col justify-end p-3xl">
+          <div className="relative z-0 bg-orange-base w-full h-full">
+            <div className="relative z-10 w-full h-full flex flex-col justify-end p-3xl">
               <h1 className="text-cream-base font-title text-6xl -tracking-[0.06em] w-1/2">
                 Amazing New Drops!
               </h1>
@@ -21,6 +21,21 @@ export default function Home() {
               <div className="mt-3xl">
                 <Button link={"/products"} text="Shop All" newTab={false} />
               </div>
+            </div>
+
+            <div className="absolute top-0 left-0 w-full h-full">
+              <video
+                autoPlay
+                playsInline
+                loop
+                muted
+                width={"100%"}
+                height={"100%"}
+              >
+                <source src="/home-movie.mp4" type="video/mp4"></source>
+              </video>
+
+              <div className="absolute top-0 left-0 w-full h-full bg-black-base/[0.24]"></div>
             </div>
           </div>
         </div>
