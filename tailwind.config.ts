@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: [
@@ -8,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        title: ["Instrument Serif", ...defaultTheme.fontFamily.serif],
+        body: ["Montserrat", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -18,7 +23,7 @@ export default {
           base: "#F6CB40",
         },
         cream: {
-          base: "#F7E6DA",
+          base: "#FDF7F3",
         },
         black: {
           base: "#1F1F1F",
