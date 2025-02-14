@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { stripe } from "@/lib/Stripe/stripe";
 import { NextRequest, NextResponse } from "next/server";
 

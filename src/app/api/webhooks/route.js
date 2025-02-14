@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
-import { stripe } from "@/lib/stripe"; // Adjust the path to your Stripe instance
+import { stripe } from "@/lib/Stripe/stripe";
 
 export async function POST(req) {
   let event;
